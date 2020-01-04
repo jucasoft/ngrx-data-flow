@@ -27,9 +27,9 @@ export const getNode = (items) => items.filter(value => value.type === 'node');
 })
 export class WorkflowListComponent implements OnInit, AfterViewInit {
 
-  private collection$: Observable<string>;
-  private prevHighlighted: { cells: mxCell[], style: any };
-  private lastHighlights = [];
+  collection$: Observable<string>;
+  prevHighlighted: { cells: mxCell[], style: any };
+  lastHighlights = [];
 
   constructor(private store$: Store<RootStoreState.State>,
               private confirmationService: ConfirmationService) {

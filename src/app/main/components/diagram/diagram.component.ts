@@ -20,7 +20,7 @@ export class DiagramComponent implements AfterViewInit {
     }
   }
 
-  private _window = window;
+  _window = window;
 
   private _xmldDoc: string;
 
@@ -123,7 +123,7 @@ export class DiagramComponent implements AfterViewInit {
   }
 
   @HostListener('mousewheel', ['$event'])
-  private onMousewheel(event) {
+  onMousewheel(event) {
     if (!event.ctrlKey) {
       return;
     }
@@ -139,7 +139,7 @@ export class DiagramComponent implements AfterViewInit {
   }
 
   @HostListener('dblclick', ['$event'])
-  private onDblclick(event) {
+  onDblclick(event) {
     event.stopPropagation();
     event.preventDefault();
     if (event.altKey) {
