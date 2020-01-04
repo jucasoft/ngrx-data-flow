@@ -1,0 +1,22 @@
+.ng-select.custom {
+  border: 0;
+  min-height: 0;
+  border-radius: 0;
+}
+
+.ng-select.custom .ng-select-container {
+  min-height: 0;
+  border-radius: 4px;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+  height: 29px !important;
+}
+.ng-select .ng-select-container {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #a6a6a6;
+  min-height: 35px;
+  -webkit-box-align: center;
+  align-items: center;
+}

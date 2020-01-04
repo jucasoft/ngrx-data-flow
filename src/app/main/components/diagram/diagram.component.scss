@@ -1,0 +1,23 @@
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.graphContainer {
+  overflow: hidden;
+  height: 900px;
+}
+
+.overlay {
+  z-index: 1;
+  position: absolute;
+  overflow: hidden;
+  top: 50px;
+  right: 0;
+  width: 160px;
+  height: 100px;
+  background-color: #f8f8f8;
+  border: #eaeaea solid 1px;
+}
