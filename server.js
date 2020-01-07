@@ -1,14 +1,26 @@
 const express = require('express');
+const jsonServer = require('json-server');
+const server = jsonServer.create();
 const path = require('path');
-const app = express();
+const router = jsonServer.router(path.join(__dirname, 'db.json'));
+const middlewares = jsonServer.defaults();
 
 // Serve static files....
-app.use(express.static(__dirname + '/dist/ngrx-data-flow'));
+server.use(express.static(__dirname + '/dist/ngrx-data-flow'));
 
-// Send all requests to index.html
-app.get('/*', function(req, res) {
+server.use('/api/v1', middlewares);
+server.use('/api/v1', router);
+
+server.get('**', function (req, res) {
   res.sendFile(path.join(__dirname + '/dist/ngrx-data-flow/index.html'));
 });
 
-// default Heroku PORT
-app.listen(process.env.PORT || 3000);
+router.render = (req, res) => {
+  res.jsonp({
+    data: res.locals.data
+  })
+};
+
+server.listen(process.env.PORT || 3000, (res) => {
+  console.log('JSON Server is running on: http://localohost:3000');
+});

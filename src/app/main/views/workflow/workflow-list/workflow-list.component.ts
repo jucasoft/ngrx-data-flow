@@ -9,6 +9,7 @@ import {PopUpData} from '@root-store/router-store/pop-up-base.component';
 import {DiagramComponent} from '@components/diagram/diagram.component';
 import {evalData, getFlattenInObject} from '@core/utils/j-utils';
 import {concatAll, delay} from 'rxjs/operators';
+import {WorkflowStoreActions} from '@root-store/workflow-store/index';
 
 export const getNode = (items) => items.filter(value => value.type === 'node');
 
@@ -53,7 +54,9 @@ export class WorkflowListComponent implements OnInit, AfterViewInit {
   ];
 
   ngOnInit() {
+    console.log('WorkflowListComponent.ngOnInit()');
     this.collection$ = of(ngrxArchitectureOverview);
+    this.store$.dispatch(WorkflowStoreActions.SearchRequest({queryParams: {}}));
   }
 
   ngAfterViewInit(): void {

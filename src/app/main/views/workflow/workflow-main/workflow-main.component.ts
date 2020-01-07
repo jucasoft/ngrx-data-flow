@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {WorkflowStoreActions, RootStoreState} from '@root-store/index';
-import {Actions} from 'ngrx-entity-crud';
-import {Workflow} from '@models/vo/workflow';
+import {RootStoreState} from '@root-store/index';
 
 @Component({
   selector: 'app-workflow-main',
