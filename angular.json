@@ -51,6 +51,7 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "node_modules/@ng-select/ng-select/themes/default.theme.css",
               "src/css/float.css",
+              "src/css/mxGraph.css",
               "src/css/ng-select.css",
               "src/css/layout.css",
               "src/css/sizing.css",

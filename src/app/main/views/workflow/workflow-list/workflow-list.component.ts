@@ -33,7 +33,6 @@ export class WorkflowListComponent implements OnInit, AfterViewInit {
 
   constructor(private store$: Store<RootStoreState.State>,
               private confirmationService: ConfirmationService) {
-    console.log('WorkflowListComponent.constructor()');
   }
 
   @ViewChild('diagram', {static: true})
@@ -58,11 +57,9 @@ export class WorkflowListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-
   }
 
   onEdit(item) {
-    console.log('WorkflowListComponent.onEdit()');
 
     const state: PopUpData<Workflow> = {
       item,
@@ -97,8 +94,6 @@ export class WorkflowListComponent implements OnInit, AfterViewInit {
   }
 
   onZoom(value: number) {
-    console.log('WorkflowListComponent.onZoom()');
-    console.log('value', value);
     this.diagram.perform(
       (graph, model) => {
         graph.zoomTo(value, true);
@@ -107,15 +102,11 @@ export class WorkflowListComponent implements OnInit, AfterViewInit {
   }
 
   showSelected(selected: Workflow[]) {
-    console.log('WorkflowListComponent.showSelected()');
-    console.log('selected', selected.length);
 
     const minWidth = 800;
     const minHeight = 600;
     const margin = 50;
-    if (selected && selected.length > 0) {
-      console.log('ev[0].value:', selected[0].value);
-    }
+
     if (!selected) {
       return;
     }
@@ -158,10 +149,9 @@ export class WorkflowListComponent implements OnInit, AfterViewInit {
   }
 
   onChangeSelectedAction($event) {
-    console.log('WorkflowListComponent.onChangeSelectedAction($event)');
-    console.log('$event', $event);
-    this.lastHighlights.forEach(item => item.destroy());
+    this.lastHighlights.forEach(fn => fn());
     this.lastHighlights = [];
+
     this.diagram.perform(
       (graph, model) => {
         const array$ = getObservables(stepsMap[$event.value]);
@@ -176,14 +166,23 @@ export class WorkflowListComponent implements OnInit, AfterViewInit {
 
 export const EdgeConstants: any = mxConstants;
 
-export const highlights = (graph, cells: mxCell[]) => {
-  // graph.setCellStyles(EdgeConstants.STYLE_FILLCOLOR, 'red', cells);
+export const highlights: (graph, cells: mxCell[]) => () => void = (graph, cells: mxCell[]) => {
+  if (cells[0].edge) {
+    const state = graph.view.getState(cells[0]);
+    state.shape.node.getElementsByTagName('path')[1].setAttribute('class', 'flow');
+    return ((stateA) => () => {
+      stateA.shape.node.getElementsByTagName('path')[1].removeAttribute('class');
+    })(state);
+  } else {
+    // graph.setCellStyles(EdgeConstants.STYLE_DASHED, 1, cells);
+    const highlight = new (window as any).mxCellHighlight(graph, '#22ff00', 2);
+    highlight.highlight(graph.view.getState(cells[0]));
+    // return highlight;
+    return ((highlightA) => () => {
+      highlightA.destroy();
+    })(highlight);
+  }
 
-  const highlight = new (window as any).mxCellHighlight(graph, '#22ff00', 2);
-  highlight.highlight(graph.view.getState(cells[0]));
-  return highlight;
-
-  // graph.setCellStyles(EdgeConstants.STYLE_STROKECOLOR, 'red', cells);
 };
 
 export const getCells = (items: Workflow[], graph, model) => {
@@ -203,7 +202,6 @@ export const getCellsFromIds = (ids, graph, model) => {
 };
 
 export const addMargin: (margin, bound) => { x, y, width, height } = (margin, bound: { x, y, width, height }) => {
-  console.log('margin, bound', margin, bound);
 
   const marginBottom = !!margin.marginBottom ? margin.marginBottom : margin;
   const marginLeft = !!margin.marginLeft ? margin.marginLeft : margin;
@@ -214,7 +212,6 @@ export const addMargin: (margin, bound) => { x, y, width, height } = (margin, bo
   const y = bound.y - marginTop;
   const width = bound.width + marginRight + marginLeft;
   const height = bound.height + marginBottom + marginTop;
-  console.log('{x, y, width, height}', {x, y, width, height});
   return {x, y, width, height};
 };
 
@@ -235,7 +232,6 @@ export const debugVertex = (bound, graph, parent) => {
  * which is being displayed on click.
  */
 export const createOverlay = (image, tooltip) => {
-  console.log('AppComponent.createOverlay()');
   const overlay = new (window as any).mxCellOverlay(image, tooltip);
 
   // Installs a handler for clicks on the overlay
