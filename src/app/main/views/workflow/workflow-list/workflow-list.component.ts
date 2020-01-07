@@ -56,7 +56,7 @@ export class WorkflowListComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     console.log('WorkflowListComponent.ngOnInit()');
     this.collection$ = of(ngrxArchitectureOverview);
-    this.store$.dispatch(WorkflowStoreActions.SearchRequest({queryParams: {}}));
+    // this.store$.dispatch(WorkflowStoreActions.SearchRequest({queryParams: {}}));
   }
 
   ngAfterViewInit(): void {
