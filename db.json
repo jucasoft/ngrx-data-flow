@@ -2,8 +2,18 @@
   "workflow": [
     {
       "id": 1,
-      "vlue": "A"
+      "name": "A",
+      "value": "A"
+    },
+    {
+      "id": 2,
+      "name": "B",
+      "value": "B"
+    },
+    {
+      "id": 3,
+      "name": "C",
+      "value": "C"
     }
-  ],
-  "workflowExecution": []
+  ]
 }
