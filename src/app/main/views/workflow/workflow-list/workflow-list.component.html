@@ -1,14 +1,1 @@
-<div class="p-grid">
-  <div class="p-col-8">
-    <ng-select #ngSelect
-               [items]="actions"
-               pTooltip="Point selection"
-               [addTag]="true"
-               [virtualScroll]="true"
-               (change)="onChangeSelectedAction($event)"
-               addTagText="Filter "
-               class="custom">
-    </ng-select>
-  </div>
-</div>
-<app-diagram #diagram [xmldDoc]="(collection$ | async)" (selectedItems)="onSelect($event)"></app-diagram>
+<app-ngrx-data-flow></app-ngrx-data-flow>

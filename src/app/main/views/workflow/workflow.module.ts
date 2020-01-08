@@ -17,13 +17,13 @@ import {NgLetModule} from '@core/directive/ng-let.directive';
 import {ToolbarModule} from 'primeng/toolbar';
 import {TooltipModule} from 'primeng/tooltip';
 import {NgSelectModule} from '@ng-select/ng-select';
+import {NgrxDataFlowModule} from '@components/ngrx-data-flow/ngrx-data-flow.module';
 
 @NgModule({
   declarations: [
     WorkflowEditComponent,
     WorkflowMainComponent,
-    WorkflowListComponent,
-    DiagramComponent,
+    WorkflowListComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +40,8 @@ import {NgSelectModule} from '@ng-select/ng-select';
     ToolbarModule,
     TooltipModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    NgrxDataFlowModule
   ],
   providers: [],
   entryComponents: []
