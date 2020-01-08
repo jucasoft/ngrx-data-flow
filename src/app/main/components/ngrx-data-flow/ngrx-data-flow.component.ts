@@ -1,10 +1,7 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
 import {from, Observable, of} from 'rxjs';
-import {Store} from '@ngrx/store';
-import {RootStoreState} from '@root-store/index';
 import {ConfirmationService} from 'primeng/api';
 import {DiagramComponent} from '@components/diagram/diagram.component';
-import {Workflow} from '@models/vo/workflow';
 import {concatAll, delay} from 'rxjs/operators';
 import {ngrxArchitectureOverview} from '@components/ngrx-data-flow/ngrx-data-flow-data';
 
@@ -85,7 +82,7 @@ export const highlights: (graph, cells: mxCell[]) => () => void = (graph, cells:
 
 };
 
-export const getCells = (items: Workflow[], graph, model) => {
+export const getCells = (items: any[], graph, model) => {
   const result = [];
   items.forEach((item, index, array) => {
     result.push(model.getCell(item.id));

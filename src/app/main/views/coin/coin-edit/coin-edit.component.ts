@@ -1,30 +1,30 @@
 import {Component} from '@angular/core';
 import {closePopUpAction, PopUpBaseComponent} from '@root-store/router-store/pop-up-base.component';
-import {Workflow} from '@models/vo/workflow';
+import {Coin} from '@models/vo/coin';
 import {FormGroup} from '@angular/forms';
-import {WorkflowStoreActions} from '@root-store/workflow-store';
+import {CoinStoreActions} from '@root-store/coin-store';
 
 
 @Component({
-  selector: 'app-workflow-edit',
-  templateUrl: './workflow-edit.component.html',
+  selector: 'app-coin-edit',
+  templateUrl: './coin-edit.component.html',
   styles: [``]
 })
-export class WorkflowEditComponent extends PopUpBaseComponent<Workflow> {
+export class CoinEditComponent extends PopUpBaseComponent<Coin> {
 
   form: FormGroup;
   keys: string[];
 
-  setItemPerform(value: Workflow): void {
+  setItemPerform(value: Coin): void {
     const group = this.fb.group({});
     this.keys = Object.keys(value);
     this.keys.forEach(key => group.addControl(key, this.fb.control({value: value[key], disabled: key === 'id'})));
     this.form = group;
   }
 
-  acceptPerform(item: Workflow): void {
+  acceptPerform(item: Coin): void {
     if (item.id) {
-      this.store$.dispatch(WorkflowStoreActions.EditRequest({
+      this.store$.dispatch(CoinStoreActions.EditRequest({
         item, onResult: [
           // azione che verrà invocata al result della chiamata all'interno dell'effect.
           // chiude la popUP.
@@ -33,7 +33,7 @@ export class WorkflowEditComponent extends PopUpBaseComponent<Workflow> {
         ]
       }));
     } else {
-      this.store$.dispatch(WorkflowStoreActions.CreateRequest({
+      this.store$.dispatch(CoinStoreActions.CreateRequest({
         item, onResult: [
           // azione che verrà invocata al result della chiamata all'interno dell'effect.
           // chiude la popUP.

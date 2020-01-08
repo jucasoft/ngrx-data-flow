@@ -1,7 +1,7 @@
-import {WorkflowStoreState} from '@root-store/workflow-store';
+import {CoinStoreState} from '@root-store/coin-store';
 import {SlideMenuStoreState} from '@root-store/slide-menu-store';
 
 export interface State {
-  workflow: WorkflowStoreState.State;
+coin:CoinStoreState.State;
   slide_menu: SlideMenuStoreState.State;
 }

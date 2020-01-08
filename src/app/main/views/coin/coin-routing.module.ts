@@ -1,17 +1,17 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {WorkflowMainComponent} from './workflow-main/workflow-main.component';
-import {WorkflowEditComponent} from '@views/workflow/workflow-edit/workflow-edit.component';
+import {CoinMainComponent} from './coin-main/coin-main.component';
+import {CoinEditComponent} from '@views/coin/coin-edit/coin-edit.component';
 
 const routes: Routes = [
   {
     path: 'main',
-    component: WorkflowMainComponent,
+    component: CoinMainComponent,
     pathMatch: 'full'
   },
   {
     path: 'edit',
-    component: WorkflowEditComponent,
+    component: CoinEditComponent,
     outlet: 'popUp',
     pathMatch: 'full'
   },
@@ -21,7 +21,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-      path: '**',
+    path: '**',
     redirectTo: 'main',
     pathMatch: 'full'
   }
@@ -33,5 +33,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class WorkflowRoutingModule {
+export class CoinRoutingModule {
 }

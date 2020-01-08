@@ -4,7 +4,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {path: '', redirectTo: 'workflow', pathMatch: 'full'},
-  {path: 'workflow', loadChildren: () => import('./main/views/workflow/workflow.module').then(m => m.WorkflowModule)}
+  {path: 'coin', loadChildren: () => import('./main/views/coin/coin.module').then(m => m.CoinModule)},
 ];
 
 @NgModule({
