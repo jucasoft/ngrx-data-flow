@@ -12,12 +12,15 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {SearchModule} from '@components/search/search.module';
 import {PipesModule} from '@core/pipe/pipes.module';
-//testaaa
+import {ButtonNewCoinComponent} from '@views/coin/components/button-new-coin.component';
+import {TooltipModule} from 'primeng/tooltip';
+
 @NgModule({
   declarations: [
     CoinEditComponent,
     CoinMainComponent,
-    CoinListComponent
+    CoinListComponent,
+    ButtonNewCoinComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,8 @@ import {PipesModule} from '@core/pipe/pipes.module';
     ButtonModule,
     InputTextModule,
     PipesModule,
-    SearchModule
+    SearchModule,
+    TooltipModule
   ],
   providers: [],
   entryComponents: []
