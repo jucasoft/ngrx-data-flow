@@ -58,6 +58,11 @@ export class NgrxDataFlowComponent implements OnInit, AfterViewInit {
       }
     );
   }
+
+  onSelect($event: any[]) {
+
+  }
+
 }
 
 
