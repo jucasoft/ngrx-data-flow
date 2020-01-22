@@ -43,5 +43,15 @@ export class ButtonNewCoinComponent implements OnInit {
       extras: {state}
     }));
 
+    // const state: PopUpData<Coin> = {
+    //   item: new Coin(),
+    //   props: {title: 'Create coin', route: 'coin'}
+    // };
+    //
+    // // apro la popUP
+    // this.store$.dispatch(RouterStoreActions.RouterGo({
+    //   path: ['coin', {outlets: {popUp: ['data-flow']}}],
+    //   extras: {state}
+    // }));
   }
 }

@@ -1,22 +1,21 @@
 import {AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
 import {from, Observable, of} from 'rxjs';
-import {ConfirmationService} from 'primeng/api';
 import {DiagramComponent} from '@components/diagram/diagram.component';
 import {concatAll, delay} from 'rxjs/operators';
 import {ngrxArchitectureOverview} from '@components/ngrx-data-flow/ngrx-data-flow-data';
+import {PopUpBaseComponent} from '@root-store/router-store/pop-up-base.component';
+import {Coin} from '@models/vo/coin';
 
 @Component({
   selector: 'app-ngrx-data-flow',
   templateUrl: './ngrx-data-flow.component.html',
-  styleUrls: ['./ngrx-data-flow.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./ngrx-data-flow.component.css']
 })
 export class NgrxDataFlowComponent implements OnInit, AfterViewInit {
 
   collection$: Observable<string>;
   lastHighlights = [];
 
-  constructor(private confirmationService: ConfirmationService) {}
 
   @ViewChild('diagram', {static: true})
   private diagram: DiagramComponent;
@@ -36,7 +35,7 @@ export class NgrxDataFlowComponent implements OnInit, AfterViewInit {
   ];
 
   ngOnInit() {
-    console.log('WorkflowListComponent.ngOnInit()');
+    console.log('NgrxDataFlowComponent.ngOnInit()');
     this.collection$ = of(ngrxArchitectureOverview);
     // this.store$.dispatch(WorkflowStoreActions.SearchRequest({queryParams: {}}));
   }
@@ -61,6 +60,10 @@ export class NgrxDataFlowComponent implements OnInit, AfterViewInit {
 
   onSelect($event: any[]) {
 
+  }
+
+  cancel(): void {
+    console.log('NgrxDataFlowComponent.cancel()');
   }
 
 }

@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {closePopUpAction, PopUpBaseComponent} from '@root-store/router-store/pop-up-base.component';
+import {PopUpBaseComponent, PopUpData} from '@root-store/router-store/pop-up-base.component';
 import {Coin} from '@models/vo/coin';
 import {FormGroup} from '@angular/forms';
-import {CoinStoreActions} from '@root-store/coin-store';
+import {RouterStoreActions} from '@root-store/router-store/index';
 
 
 @Component({
@@ -24,27 +24,36 @@ export class CoinEditComponent extends PopUpBaseComponent<Coin> {
 
   acceptPerform(item: Coin): void {
     if (item.id) {
-      this.store$.dispatch(CoinStoreActions.EditRequest({
-        item, onResult: [
-          // azione che verrà invocata al result della chiamata all'interno dell'effect.
-          // chiude la popUP.
-          // closePopUpAction: metodo per la creazione dell'azione di chiusura della popUP
-          closePopUpAction(this.route)
-        ]
+
+      // this.store$.dispatch(CoinStoreActions.EditRequest({
+      //   item
+      // }));
+
+
+      const state: PopUpData<Coin> = {
+        item: new Coin(),
+        props: {title: 'Create coin', route: 'coin'}
+      };
+
+      // apro la popUP
+      this.store$.dispatch(RouterStoreActions.RouterGo({
+        path: ['coin', {outlets: {popUp: ['data-flow']}}],
+        extras: {state}
       }));
+
+
     } else {
-      this.store$.dispatch(CoinStoreActions.CreateRequest({
-        item, onResult: [
-          // azione che verrà invocata al result della chiamata all'interno dell'effect.
-          // chiude la popUP.
-          // closePopUpAction: metodo per la creazione dell'azione di chiusura della popUP
-          closePopUpAction(this.route)
-        ]
+      const state: PopUpData<Coin> = {
+        item: new Coin(),
+        props: {title: 'Create coin', route: 'coin'}
+      };
+
+      // apro la popUP
+      this.store$.dispatch(RouterStoreActions.RouterGo({
+        path: ['coin', {outlets: {popUp: ['data-flow']}}],
+        extras: {state}
       }));
     }
   }
 
-  // cancel(): void {
-  //   this.store$.dispatch(closePopUpAction(this.route));
-  // }
 }

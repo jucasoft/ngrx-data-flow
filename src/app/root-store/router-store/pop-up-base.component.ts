@@ -74,6 +74,8 @@ export class PopUpBaseComponent<T> implements OnInit, OnDestroy {
   }
 
   cancel(): void {
+    console.log('PopUpBaseComponent.cancel()');
+    console.log('this.route', this.route);
     this.store$.dispatch(closePopUpAction(this.route));
   }
 }

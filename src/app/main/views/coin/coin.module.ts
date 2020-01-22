@@ -14,6 +14,7 @@ import {SearchModule} from '@components/search/search.module';
 import {PipesModule} from '@core/pipe/pipes.module';
 import {ButtonNewCoinComponent} from '@views/coin/components/button-new-coin.component';
 import {TooltipModule} from 'primeng/tooltip';
+import {NgrxDataFlowModule} from '@components/ngrx-data-flow/ngrx-data-flow.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {TooltipModule} from 'primeng/tooltip';
     InputTextModule,
     PipesModule,
     SearchModule,
-    TooltipModule
+    TooltipModule,
+    NgrxDataFlowModule
   ],
   providers: [],
   entryComponents: []

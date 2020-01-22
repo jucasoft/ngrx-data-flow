@@ -1,14 +1,33 @@
-<div class="p-grid">
-  <div class="p-col-8">
-    <ng-select #ngSelect
-               [items]="actions"
-               pTooltip="Point selection"
-               [addTag]="true"
-               [virtualScroll]="true"
-               (change)="onChangeSelectedAction($event)"
-               addTagText="Filter "
-               class="custom">
-    </ng-select>
+<p-dialog [transitionOptions]="'150ms cubic-bezier(0, 0, 0.2, 1)'"
+          [visible]="true"
+          [modal]="true"
+          [responsive]="true"
+          [style]="{width: '70em', minWidth: '200px'}"
+          [minY]="70"
+          [maximizable]="false"
+          [closable]="false"
+          (onHide)="cancel()">
+
+  <p-header>
+    <a (click)="cancel()" role="button" tabindex="0" class="ng-tns-c11-8 ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all ng-star-inserted"><span class="pi pi-times"></span></a>
+  </p-header>
+  <div class="ui-g">
+    <div class="ui-g-12">
+      <ng-select #ngSelect
+                 [style.width.%]="100"
+                 [items]="actions"
+                 pTooltip="Point selection"
+                 [addTag]="true"
+                 [virtualScroll]="true"
+                 (change)="onChangeSelectedAction($event)"
+                 addTagText="Filter "
+                 class="custom">
+      </ng-select>
+    </div>
   </div>
-</div>
-<app-diagram #diagram [xmldDoc]="(collection$ | async)" (selectedItems)="onSelect($event)"></app-diagram>
+  <div class="ui-g">
+    <div class="ui-g">
+      <app-diagram #diagram [xmldDoc]="(collection$ | async)" (selectedItems)="onSelect($event)"></app-diagram>
+    </div>
+  </div>
+</p-dialog>

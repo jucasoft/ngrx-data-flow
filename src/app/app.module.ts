@@ -19,6 +19,7 @@ import {CardModule} from 'primeng/card';
 import {WindowRef} from '@core/components/window-ref';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {FormsModule} from '@angular/forms';
+import {NgrxDataFlowModule} from '@components/ngrx-data-flow/ngrx-data-flow.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {FormsModule} from '@angular/forms';
     ClickOutsideModule,
     CardModule,
     NgSelectModule,
-    FormsModule
+    FormsModule,
+    NgrxDataFlowModule
   ],
   providers: [ConfirmationService, WindowRef],
   bootstrap: [AppComponent]

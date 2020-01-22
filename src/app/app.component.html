@@ -1,7 +1,6 @@
 <div>
   <app-progress class="layout-progressBar"></app-progress>
   <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
-  <router-outlet name="popUp"></router-outlet>
   <div *ngLet="(open$|async) as open" class="layout-container">
     <div class="layout-menu" [ngClass]="open ? 'layout-menu-inactive':''"
          (clickOutside)="onClickOutside($event,open, layoutMain)">
@@ -12,9 +11,12 @@
     </div>
     <div #layoutMain class="layout-main" [ngClass]="open?'layout-main-menu-opened':''">
       <div class="p-1 mt-2">
+        <app-ngrx-data-flow></app-ngrx-data-flow>
         <router-outlet></router-outlet>
       </div>
       <app-footer></app-footer>
+      <router-outlet name="popUp"></router-outlet>
     </div>
   </div>
 </div>
+
