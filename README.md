@@ -1,5 +1,5 @@
 # ngrx-data-flow
-Progetto realizzato utilizzando la libreria ngrx-entity-crud, configurato in modo da poter essere deploiato su eroku.
+Utilizzo della libreria ngrx-entity-crud, deploiato su https://www.heroku.com/.
 
 # note
 i comandi per avviare il progetto:  
