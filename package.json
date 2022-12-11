@@ -31,7 +31,7 @@
     "@ngrx/store-devtools": "^8.6.0",
     "chart.js": "^2.9.4",
     "deepmerge": "^4.2.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "json-server": "^0.15.1",
     "mxgraph": "^4.0.6",
     "ngrx-entity-crud": "^0.5.58",
